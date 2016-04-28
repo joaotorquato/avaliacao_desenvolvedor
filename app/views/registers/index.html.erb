@@ -18,17 +18,25 @@
           <table class="table table-striped task-table">
             <thead>
               <tr>
-                <td>Comprador</td>
-                <td>Descrição</td>
-                <td>Preço Uniário</td>
-                <td>Quantidade</td>
-                <td>Endereço</td>
-                <td>Fornecedor</td>
+                <td>Buyer</td>
+                <td>Description</td>
+                <td>Unity Price</td>
+                <td>Quantity</td>
+                <td>Address</td>
+                <td>Supplier</td>
               </tr>
             </thead>
             <tbody>
               <%= render @registers %>
             </tbody>
+            <tfoot>
+              <tr>
+                <td colspan="5" class="text-right">Total price:</td>
+                <td>
+                  R$<%= @total %>
+                </td>
+              </tr>
+            </tfoot>
           </table>
         </div>
       </div>

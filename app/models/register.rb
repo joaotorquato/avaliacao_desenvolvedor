@@ -5,4 +5,10 @@ class Register < ActiveRecord::Base
     end
     true
   end
+
+  def self.total_price
+    Register.all.to_a.sum do |p|
+      p.unity_price * p.quantity
+    end
+  end
 end

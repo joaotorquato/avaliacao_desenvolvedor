@@ -9,9 +9,20 @@ describe RegistersController do
                       content_type: 'text/plain',
                       tempfile: File.new('spec/support/dados.txt'))
 
-        post :create, register: {file: upload}
+        post :create, register: { file: upload }
 
         expect(response).to redirect_to(registers_path)
+        expect(flash[:success])
+          .to match(/^Your file was saved successfuly./)
+      end
+    end
+    context 'when file was not select' do
+      it 'renders the page with error' do
+        post :create
+
+        expect(response).to render_template(:new)
+        expect(flash[:notice])
+          .to match(/^Empty file. Please upload a valid one./)
       end
     end
     context 'when file is empty' do
@@ -21,7 +32,7 @@ describe RegistersController do
                       content_type: 'text/plain',
                       tempfile: File.new('spec/support/empty_data.txt'))
 
-        post :create, register: {file: upload}
+        post :create, register: { file: upload }
 
         expect(response).to render_template(:new)
         expect(flash[:notice])
