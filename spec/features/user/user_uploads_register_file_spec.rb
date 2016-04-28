@@ -8,7 +8,7 @@ feature 'User uploads a register file' do
 
     click_on 'Save'
 
-    register_list = page.all('.table tr')
+    register_list = page.all('.table tbody tr')
     expect(register_list.count).to eq 4
 
     [

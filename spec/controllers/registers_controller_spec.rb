@@ -9,7 +9,7 @@ describe RegistersController do
                       content_type: 'text/plain',
                       tempfile: File.new('spec/support/dados.txt'))
 
-        post :create, register_file: upload
+        post :create, register: {file: upload}
 
         expect(response).to redirect_to(registers_path)
       end
@@ -21,7 +21,7 @@ describe RegistersController do
                       content_type: 'text/plain',
                       tempfile: File.new('spec/support/empty_data.txt'))
 
-        post :create, register_file: upload
+        post :create, register: {file: upload}
 
         expect(response).to render_template(:new)
         expect(flash[:notice])

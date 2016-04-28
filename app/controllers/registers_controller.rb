@@ -3,7 +3,7 @@ class RegistersController < ApplicationController
   end
 
   def create
-    content = params[:register_file].read
+    content = params[:register][:file].read
     if content.empty?
       flash[:notice] = 'Empty file. Please upload a valid one.'
       render :new

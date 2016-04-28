@@ -1,37 +1,37 @@
-<table class="table">
-  <thead>
-    <th>
-      <td>
-        Comprador
-      </td>
-    </th>
-    <th>
-      <td>
-        Descrição
-      </td>
-    </th>
-    <th>
-      <td>
-        Preço Uniário
-      </td>
-    </th>
-    <th>
-      <td>
-        Quantidade
-      </td>
-    </th>
-    <th>
-      <td>
-        Endereço
-      </td>
-    </th>
-    <th>
-      <td>
-        Fornecedor
-      </td>
-    </th>
-  </thead>
-  <tbody>
-    <%= render @registers %>
-  </tbody>
-</table>
+<section class="list-list">
+  <div class="row">
+    <div class="col-md-offset-3 col-md-6 col-sm-12 text-center">
+      <div class="page-header">
+        <h1>
+          Registers History
+        </h1>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-offset-3 col-md-6 col-sm-12">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          Registers
+        </div>
+        <div class="panel-body">
+          <table class="table table-striped task-table">
+            <thead>
+              <tr>
+                <td>Comprador</td>
+                <td>Descrição</td>
+                <td>Preço Uniário</td>
+                <td>Quantidade</td>
+                <td>Endereço</td>
+                <td>Fornecedor</td>
+              </tr>
+            </thead>
+            <tbody>
+              <%= render @registers %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
