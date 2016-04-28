@@ -1,10 +1,10 @@
 FactoryGirl.define do
   factory :register do
-    buyer 'MyString'
-    description 'MyText'
-    unity_price '9.99'
+    sequence(:buyer) { |n| "Buyer ##{n}" }
+    description 'Description test'
+    unity_price 10.0
     quantity 1
-    address 'MyText'
-    supplier 'MyString'
+    address 'Address test'
+    supplier 'Supplier test'
   end
 end

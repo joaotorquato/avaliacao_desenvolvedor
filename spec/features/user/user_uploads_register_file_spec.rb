@@ -2,7 +2,7 @@ require 'rails_helper'
 
 feature 'User uploads a register file' do
   scenario 'successfuly sees' do
-    visit root_path
+    visit new_register_path
 
     attach_file 'register_file', 'spec/support/dados.txt'
 
@@ -18,6 +18,11 @@ feature 'User uploads a register file' do
       'Snake Plissken R$20 Sneakers for R$5 5.0 4 123 Fake St Sneaker Store Emporium'
     ].each_with_index do |register, index|
       expect(register_list[index]).to have_content register
+    end
+
+    within('.table tfoot') do
+      expect(page).to have_content 'Total price:'
+      expect(page).to have_content 'R$95.0'
     end
   end
 end

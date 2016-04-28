@@ -3,18 +3,20 @@ class RegistersController < ApplicationController
   end
 
   def create
-    content = params[:register][:file].read
-    if content.empty?
+    register_params = params[:register]
+    if register_params.nil? || (content = register_params[:file].read).empty?
       flash[:notice] = 'Empty file. Please upload a valid one.'
       render :new
     else
       parser = Parser.new(content)
       Register.save_registers(parser.registers)
-      redirect_to action: :index
+      flash[:success] = 'Your file was saved successfuly.'
+      redirect_to registers_path
     end
   end
 
   def index
     @registers = Register.all
+    @total = Register.total_price
   end
 end

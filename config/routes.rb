@@ -1,4 +1,4 @@
 Rails.application.routes.draw do
-  root to: "registers#new"
-  resources :registers, only: [:create, :index]
+  root to: "registers#index"
+  resources :registers, only: [:new, :create, :index]
 end
