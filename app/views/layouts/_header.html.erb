@@ -2,7 +2,7 @@
   <div class="container-fluid">
     <div class="row">
       <div class="col-md-offset-3 col-md-6 col-sm-12 text-center">
-        <%= link_to 'Register', root_path, class: 'navbar-brand navbar-btn' %>
+        <%= link_to 'iRegister', root_path, class: 'navbar-brand navbar-btn' %>
         <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
             <span class="sr-only">Toggle navigation</span>
@@ -13,7 +13,8 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse" aria-expanded="false" style="height: 1px;">
           <ul class="nav navbar-nav navbar-right">
-            <li><%= link_to 'Upload a new register file ', new_register_path, class: 'navbar-btn' %></li>
+            <li><%= link_to 'Upload a new register file', new_register_path, class: 'navbar-btn' %></li>
+            <li><%= link_to 'Register History', registers_path, class: 'navbar-btn' %></li>
           </ul>
         </div>
       </div>

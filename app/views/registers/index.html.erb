@@ -15,7 +15,7 @@
           Registers
         </div>
         <div class="panel-body">
-          <table class="table table-striped task-table">
+          <table class="table table-striped table-responsive">
             <thead>
               <tr>
                 <td>Buyer</td>
@@ -27,6 +27,9 @@
               </tr>
             </thead>
             <tbody>
+              <% if @registers.empty?  %>
+              <tr><td colspan="6" class="text-center"><h4>You don't have any registers yet.</h4></td></tr>
+              <% end  %>
               <%= render @registers %>
             </tbody>
             <tfoot>

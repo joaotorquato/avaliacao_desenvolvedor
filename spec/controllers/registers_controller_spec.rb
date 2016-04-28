@@ -13,7 +13,21 @@ describe RegistersController do
 
         expect(response).to redirect_to(registers_path)
         expect(flash[:success])
-          .to match(/^Your file was saved successfuly./)
+          .to match(/^Your file was saved successfuly/)
+      end
+    end
+    context 'when file is invalid' do
+      it 'renders the page with error' do
+        upload = ActionDispatch::Http::UploadedFile
+                 .new(filename: 'fail_test.bin',
+                      content_type: 'application/octet-stream',
+                      tempfile: File.new('spec/support/fail_test.bin'))
+
+        post :create, register: { file: upload }
+
+        expect(response).to render_template(:new)
+        expect(flash[:notice])
+          .to match(/^This file is invalid, please select a valid one/)
       end
     end
     context 'when file was not select' do
@@ -22,7 +36,7 @@ describe RegistersController do
 
         expect(response).to render_template(:new)
         expect(flash[:notice])
-          .to match(/^Empty file. Please upload a valid one./)
+          .to match(/^File not found. Please select a file before click 'save'/)
       end
     end
     context 'when file is empty' do
@@ -36,7 +50,7 @@ describe RegistersController do
 
         expect(response).to render_template(:new)
         expect(flash[:notice])
-          .to match(/^Empty file. Please upload a valid one./)
+          .to match(/^Empty file. Please upload a valid one/)
       end
     end
   end
